@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bookmark/create'
+  get 'bookmark/destroy'
   get 'posts/index'
   get 'posts/show'
   get 'posts/new'
@@ -11,5 +13,10 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resources :users, only: %i[new create]
-  resources :posts
+  resources :posts do
+    collection do
+      get :bookmarks
+    end
+  end
+  resources :bookmarks, only: %i[create destroy]
 end
