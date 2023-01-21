@@ -1,0 +1,2 @@
+class PostAirtist < ApplicationRecord
+end
