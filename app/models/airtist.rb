@@ -1,0 +1,2 @@
+class Airtist < ApplicationRecord
+end
