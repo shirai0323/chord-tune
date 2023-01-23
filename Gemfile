@@ -46,6 +46,8 @@ gem "bootsnap", require: false
 
 gem 'sorcery'
 
+gem 'bootstrap'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
