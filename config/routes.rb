@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   get 'bookmark/create'
   get 'bookmark/destroy'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/new'
-  get 'posts/edit'
 
   root 'top#index'
 

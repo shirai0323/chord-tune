@@ -1,2 +1,5 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>投稿一覧</h1>
+<% @posts.each do |post| %>
+  <p>コード譜</p>
+  <span><%= link_to post.song_title, post_path(post) %></span>
+<% end %>
