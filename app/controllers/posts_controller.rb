@@ -13,10 +13,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
+    if @post.save!
       redirect_to posts_path
     else
-      flash.now['danger'] = 'error'
+      falsh.now['danger'] = 'error'
       render :new
     end
   end
