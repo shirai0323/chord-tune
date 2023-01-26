@@ -1,4 +1,6 @@
 <h1>投稿一覧</h1>
+<%= link_to 'コード譜新規作成', new_post_path, class: 'btn btn-primary' %>
+
 <% @posts.each do |post| %>
   <p>コード譜</p>
   <span><%= link_to post.song_title, post_path(post) %></span>
