@@ -14,6 +14,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      array = @post.body.split("]")
+      array.map{ |item| item.split("[") }
+      array.each do |item|
+        @post.scores.create(kind: :lyric, content: item.first)
+        @post.scores.create(kind: :chord, content: item.last)
+      end
       redirect_to posts_path
     else
       falsh.now['danger'] = 'error'
