@@ -1,4 +1,10 @@
 <h1>投稿詳細</h1>
 <p><%= @post.song_title %></p>
 <h2>コード譜</h2>
-<p><%= @post.body %></p>
+  <% @post.scores.each do |score| %>
+    <% if score.chord? %>
+  <p><%= score.content %></p>
+    <% elsif score.lyric? %>
+  <p><%= score.content %></p>
+    <% end %>
+  <% end %>
