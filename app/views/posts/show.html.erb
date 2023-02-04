@@ -8,3 +8,4 @@
   <p><%= score.content %></p>
     <% end %>
   <% end %>
+  <%= render 'crud_menus', post: @post if current_user.own?(@post) %>
