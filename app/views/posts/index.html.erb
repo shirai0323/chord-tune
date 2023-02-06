@@ -3,5 +3,7 @@
 
 <% @posts.each do |post| %>
   <p>コード譜</p>
-  <span><%= link_to post.song_title, post_path(post) %></span>
+  <td><%= link_to post.song_title, post_path(post) %></td>
+  <td><%= post.created_at %></td>
+  <td><%= render 'crud_menus', post: post if current_user.own?(post) %></td>
 <% end %>

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[edit update destroy]
+
   def index
     @posts = Post.all
   end
@@ -12,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       array = @post.body.split("]")
       array.map{ |item| item.split("[") }
@@ -27,10 +29,27 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      flash.now['danger'] = 'error'
+      render :edit
+    end
+  end
+
+  def destroy
+    @post.destroy!
+    redirect_to posts_path, success: '削除しました'
   end
 
   private
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:body, :song_title, :capotast)
