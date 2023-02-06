@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :music_genres
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :scores
+  has_many :scores, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 65_535 }
   validates :song_title, presence: true, length: { maximum: 255 }

@@ -43,8 +43,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
-    @post.destory!
-    redirect_to posts_path
+    @post.destroy!
+    redirect_to posts_path, success: '削除しました'
   end
 
   private
