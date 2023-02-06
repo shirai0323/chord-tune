@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[edit update destroy]
+
   def index
     @posts = Post.all
   end
@@ -27,12 +29,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = current_user.posts.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to @post
     else
@@ -42,12 +41,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
     @post.destroy!
     redirect_to posts_path, success: '削除しました'
   end
 
   private
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:body, :song_title, :capotast)

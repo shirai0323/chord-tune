@@ -5,6 +5,5 @@
   <p>コード譜</p>
   <td><%= link_to post.song_title, post_path(post) %></td>
   <td><%= post.created_at %></td>
-  <td><%= link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3' %></td>
-  <td><%= button_to '削除', post_path(post), method: :delete, class: 'btn btn-danger' %></td>
+  <td><%= render 'crud_menus', post: post if current_user.own?(post) %></td>
 <% end %>
