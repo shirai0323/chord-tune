@@ -1,0 +1,6 @@
+<h1>Bookmark</h1>
+<% if @bookmark_posts.present? %>
+  <%= render @bookmark_posts %>
+<% else %>
+  <p><%= t('.no_result') %></p>
+<% end %>

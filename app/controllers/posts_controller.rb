@@ -45,6 +45,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '削除しました'
   end
 
+  def bookmarks
+    @bookmark_posts = current_user.bookmark_posts.includes(:user)
+  end
+
   private
 
   def set_post
