@@ -1,0 +1,3 @@
+<br><%= link_to post.song_title, post_path(post) %></br>
+<br><%= post.created_at %></br>
+<br><%= render 'crud_menus', post: post if current_user.own?(post) %></br>
