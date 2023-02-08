@@ -4,7 +4,7 @@
 <h3>capo</h3>
   <p><%= @post.capotast %></p>
 
-  <br>
+<br>
   <% @post.scores.each do |score| %>
     <% if score.chord? %>
   <p><%= score.content %></p>
@@ -12,5 +12,9 @@
   <p><%= score.content %></p>
     <% end %>
   <% end %>
-  </br>
-<%= render 'crud_menus', post: @post if current_user.own?(@post) %>
+  <% if current_user.own?(@post) %>
+    <%= render 'crud_menus', post: @post %>
+  <% else %>
+    <%= render 'posts/bookmark_button', post: @post %>
+  <% end %>
+</br>

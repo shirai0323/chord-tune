@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookmark/create'
-  get 'bookmark/destroy'
-
   root 'top#index'
 
   get 'login', to: 'user_sessions#new'
