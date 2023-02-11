@@ -52,6 +52,8 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 
+gem 'config'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
