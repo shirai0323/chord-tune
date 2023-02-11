@@ -14,7 +14,10 @@
           <%= button_to 'ログアウト', logout_path, class: 'nav-link', method: :delete %>
         </li>
         <li class="nav-item">
-          <%= link_to 'ブックマーク一覧', bookmarks_posts_path %>
+          <%= link_to 'ブックマーク一覧', bookmarks_posts_path, class: 'dropdown-item' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'プロフィール', profile_path, class: 'dropdown-item' %>
         </li>
       </ul>
     </div>

@@ -48,6 +48,10 @@ gem 'sorcery'
 
 gem 'bootstrap'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
