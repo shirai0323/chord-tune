@@ -23,6 +23,12 @@ class PostsController < ApplicationController
         @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
         @post.scores.create(kind: :chord, content: item.last) if item.last.present?
       end
+      airtists.each do |airtist|
+        post_airtists = post.airtists.create(name: airtist)
+      end
+      genres.each do |genre|
+        music_genres = post.genres.create(name: genre)
+      end
       redirect_to posts_path, success: '投稿しました'
     else
       flash.now['danger'] = '投稿に失敗しました'
@@ -58,6 +64,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast)
+    params.require(:post).permit(:body, :song_title, :capotast, :airtist)
   end
 end
