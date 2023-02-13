@@ -23,9 +23,9 @@ class PostsController < ApplicationController
         @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
         @post.scores.create(kind: :chord, content: item.last) if item.last.present?
       end
-      redirect_to posts_path
+      redirect_to posts_path, success: '投稿しました'
     else
-      falsh.now['danger'] = 'error'
+      flash.now['danger'] = '投稿に失敗しました'
       render :new
     end
   end
@@ -34,9 +34,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post, success: '更新しました'
     else
-      flash.now['danger'] = 'error'
+      flash.now['danger'] = '更新に失敗しました'
       render :edit
     end
   end
