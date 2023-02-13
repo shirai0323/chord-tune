@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
-    @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
   private
