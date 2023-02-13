@@ -54,6 +54,8 @@ gem 'mini_magick'
 
 gem 'config'
 
+gem 'ransack'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
