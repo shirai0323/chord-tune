@@ -6,8 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-	@user = User.new(user_params)
-	@user.save
+	  @user = User.new(user_params)
+	  if @user.save
+      edirect_to login_path, success: 'ユーザー登録が完了しました'
+    else
+      flash.now[:danger] = 'ユーザー登録に失敗しました'
+      render :new
+    end
   end
 
   def user_params
