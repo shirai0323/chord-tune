@@ -11,12 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_11_115033) do
-  create_table "airtists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -35,30 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_115033) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "music_genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_music_genres_on_genre_id"
-    t.index ["post_id"], name: "index_music_genres_on_post_id"
-  end
-
-  create_table "post_airtists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "airtist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["airtist_id"], name: "index_post_airtists_on_airtist_id"
-    t.index ["post_id"], name: "index_post_airtists_on_post_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -100,10 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_115033) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "music_genres", "genres"
-  add_foreign_key "music_genres", "posts"
-  add_foreign_key "post_airtists", "airtists"
-  add_foreign_key "post_airtists", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "scores", "posts"
 end
