@@ -56,6 +56,8 @@ gem 'config'
 
 gem 'ransack'
 
+gem 'high_voltage'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
