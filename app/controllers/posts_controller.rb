@@ -58,6 +58,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast, airtists_attributes: [:name, :_destroy], genres_attributes: [:name, :_destroy])
+    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre)
   end
 end
