@@ -18,16 +18,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       array = @post.body.split("]")
-      array.map{ |item| item.split("[") }
+      array.map!{ |item| item.split("[") }
       array.each do |item|
         @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
         @post.scores.create(kind: :chord, content: item.last) if item.last.present?
-      end
-      airtists.each do |airtist|
-        post_airtists = post.airtists.create(name: airtist)
-      end
-      genres.each do |genre|
-        music_genres = post.genres.create(name: genre)
       end
       redirect_to posts_path, success: '投稿しました'
     else
@@ -64,6 +58,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast, :airtist)
+    params.require(:post).permit(:body, :song_title, :capotast, airtists_attributes: [:name, :_destroy], genres_attributes: [:name, :_destroy])
   end
 end
