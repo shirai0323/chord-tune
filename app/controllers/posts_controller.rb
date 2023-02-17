@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       array = @post.body.split("]")
-      array.map{ |item| item.split("[") }
+      array.map!{ |item| item.split("[") }
       array.each do |item|
         @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
         @post.scores.create(kind: :chord, content: item.last) if item.last.present?
@@ -58,6 +58,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast)
+    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre)
   end
 end
