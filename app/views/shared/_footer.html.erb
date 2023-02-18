@@ -1,8 +1,12 @@
 <footer id='footer' class='fixed-bottom'>
+  <ul class="menu">
+    <li><%= link_to '利用規約', page_path('about') %></li>
+	<li><%= link_to 'プライバシーポリシー', page_path('policy') %></li>
+  </ul>
   <div class='container'>
       <div class='col-sm-6 col-12'>
         <div class='copyright'>
-          <p>© 2023 Chord Tune</p> <%= link_to '利用規約', page_path('about') %> <%= link_to 'プライバシーポリシー', page_path('policy') %>
+          <p>© 2023 Chord Tune</p>  
         </div>
       </div>
   </div>

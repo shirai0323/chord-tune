@@ -1,6 +1,10 @@
-<h1>Chord Tune</h1>
-<%= render 'posts/search_form', q: @q, url: posts_path %>
-<p><%= link_to 'コード譜新規作成', new_post_path, class: 'btn btn-primary' %></p>
-<p><%= link_to 'ログイン', login_path, class: 'btn btn-primary' %></p>
-<p><%= link_to '新規登録', new_user_path, class: 'btn btn-primary' %></p>
-<p><%= link_to '投稿一覧', posts_path, class: 'btn btn-primary' %></p>
+<div class="top-wrapper">
+  <div class="top-inner-text">
+    <h1 class="text-center">Chord Tune</h1>
+  </div>
+    <%= render 'posts/search_form', q: @q, url: posts_path %>
+    <p><%= link_to 'コード譜新規作成', new_post_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to 'ログイン', login_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to '新規登録', new_user_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to '投稿一覧', posts_path, class: 'btn btn-primary' %></p>
+</div>
