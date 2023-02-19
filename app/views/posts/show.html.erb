@@ -8,12 +8,12 @@
   </tbody>
 </table>
 
-  <div class="score">
+  <div class="scores">
     <% @post.scores.each do |score| %>
       <% if score.chord? %>
-    <p><%= score.content %></p>
+    <div class="score"><p><%= score.content %></p></div>
       <% elsif score.lyric? %>
-    <p><%= score.content %></p>
+    <div class="score"><p><%= score.content %></p></div>
       <% end %>
     <% end %>
   </div>
