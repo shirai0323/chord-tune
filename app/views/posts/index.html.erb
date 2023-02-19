@@ -13,3 +13,5 @@
         <th><%= post.user.name %></th>
         <th><%= render 'crud_menus', post: post if current_user.own?(post) %></th></tr>
         <% end %>
+  </tbody>
+</table>
