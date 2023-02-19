@@ -1,23 +1,25 @@
 <h1>投稿詳細</h1>
-<h3>アーティスト</h3>
-<p><%= @post.airtist %></p>
-<h2>曲名</h2>
-<p><%= @post.song_title %></p>
-<h2>コード譜</h2>
-<h3>capo</h3>
-  <p><%= @post.capotast %></p>
+<table class="table table-borderless">
+  <thead>
+    <tr><th>アーティスト</th><th>タイトル</th><th>カポタスト</th></tr>
+  </thead>
+  <tbody>
+    <tr><th><%= @post.airtist %></th><th><%= @post.song_title %></th><th><%= @post.capotast %></th></tr>
+  </tbody>
+</table>
 
-<br>
-  <% @post.scores.each do |score| %>
-    <% if score.chord? %>
-  <p><%= score.content %></p>
-    <% elsif score.lyric? %>
-  <p><%= score.content %></p>
+  <div class="scores">
+    <% @post.scores.each do |score| %>
+      <% if score.chord? %>
+    <div class="score"><p><%= score.content %></p></div>
+      <% elsif score.lyric? %>
+    <div class="score"><p><%= score.content %></p></div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
   <% if current_user.own?(@post) %>
     <%= render 'crud_menus', post: @post %>
   <% else %>
     <%= render 'posts/bookmark_button', post: @post %>
   <% end %>
-</br>
