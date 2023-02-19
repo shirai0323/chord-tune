@@ -7,13 +7,16 @@
     <tr><th><%= @post.airtist %></th><th><%= @post.song_title %></th><th><%= @post.capotast %></th></tr>
   </tbody>
 </table>
-  <% @post.scores.each do |score| %>
-    <% if score.chord? %>
-  <p><%= score.content %></p>
-    <% elsif score.lyric? %>
-  <p><%= score.content %></p>
+
+  <div class="score">
+    <% @post.scores.each do |score| %>
+      <% if score.chord? %>
+    <p><%= score.content %></p>
+      <% elsif score.lyric? %>
+    <p><%= score.content %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <% if current_user.own?(@post) %>
     <%= render 'crud_menus', post: @post %>
