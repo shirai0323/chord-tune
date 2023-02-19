@@ -1,6 +1,14 @@
 @import "top";
 @import "bootstrap";
 
+.footer-menu {
+	text-align: center;
+}
+
+.footer-item {
+	display: inline-block;
+}
+
 .copyright {
 	color: white;
 }
