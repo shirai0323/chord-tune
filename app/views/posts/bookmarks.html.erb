@@ -1,7 +1,14 @@
 <h1>ブックマーク一覧</h1>
 <%= render 'posts/search_form', url: bookmarks_posts_path %>
-<% if @bookmark_posts.present? %>
-  <%= render @bookmark_posts %>
-<% else %>
-  <p><%= t('.no_result') %></p>
-<% end %>
+<table class="table table-borderless">
+  <thead>
+    <tr><th>タイトル</th><th>アーティスト</th><th>ジャンル</th><th>投稿日</th><th>投稿者</th></tr>
+  </thead>
+  <tbody><% @bookmark_posts.each do |post| %>
+    <tr><th><%= link_to post.song_title, post_path(post) %></th>
+        <th><%= post.airtist %></th>
+        <th><%= post.genre %></th>
+        <th><%= post.created_at.to_fs(:datetime_jp) %></th>
+        <th><%= post.user.name %></th>
+        <th><%= render 'crud_menus', post: post if current_user.own?(post) %></th></tr>
+        <% end %>
