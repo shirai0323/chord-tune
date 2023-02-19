@@ -1,6 +1,18 @@
 .top-wrapper {
-  background-image: image-url('chord_tune_demo3.jpg');
-  height: calc(100vh - 134px);
-  position: relative;
-  background-position: center;
+  background-image: image-url('chord_tune_demo3_v2.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+
+  .top-inner-text {
+	width: 100%;
+	padding: 5%;
+	color: white;
+  }
+
+  .top-form {
+	padding: 7%;
+  }
 }

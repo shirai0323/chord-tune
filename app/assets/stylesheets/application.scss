@@ -1,2 +1,32 @@
 @import "top";
 @import "bootstrap";
+
+.nav-item {
+	margin: 0px 3px 0px 3px;
+}
+
+html,body {
+	height:100%;
+}
+
+.foot-wrapper {
+	position: sticky;
+}
+
+.footer-menu {
+	text-align: center;
+}
+
+.footer-item {
+	display: inline-block;
+	color: white;
+
+	.about_page {
+		color: white;
+		text-decoration: none;
+	}
+}
+
+.copyright {
+	color: white;
+}
