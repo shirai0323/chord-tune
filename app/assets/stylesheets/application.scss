@@ -1,6 +1,14 @@
 @import "top";
 @import "bootstrap";
 
+html,body {
+	height:100%;
+}
+
+.foot-wrapper {
+	position: sticky;
+}
+
 .footer-menu {
 	text-align: center;
 }
