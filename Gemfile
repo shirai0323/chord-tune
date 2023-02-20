@@ -58,6 +58,8 @@ gem 'ransack'
 
 gem 'high_voltage'
 
+gem 'rails-i18n'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 

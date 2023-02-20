@@ -1,0 +1,13 @@
+ja:
+  users:
+    new:
+      title: 'ユーザー登録'
+      name: 'アカウント名'
+      email: 'メールアドレス'
+      password: 'パスワード'
+      password_confirmation: 'パスワード確認'
+  posts:
+    new:
+      song_title: 'タイトル'
+      airtist: 'アーティスト'
+

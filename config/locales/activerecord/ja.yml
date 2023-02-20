@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+    attributes:
+      user:
+        name: 'アカウント名'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      post:
+        song_title: 'タイトル'
+        airtist: 'アーティスト'
+        genre: 'ジャンル'
+        capotast: 'カポタスト'
+        body: 'コード譜'
