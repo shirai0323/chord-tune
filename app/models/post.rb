@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   validates :song_title, presence: true, length: { maximum: 255 }
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[song_title body]
+    %w[song_title body airtist genre]
   end
 
   def self.ransackable_associations(auth_object = nil)
