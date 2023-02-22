@@ -1,6 +1,0 @@
-  <div class="search text-center">
-    <%= form_with url: new_song_path, method: :get, local: true do |f| %>
-      <%= f.text_field :album, placeholder: "アルバム名", value: @search_params %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>

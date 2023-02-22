@@ -10,4 +10,7 @@ ja:
     new:
       song_title: 'タイトル'
       airtist: 'アーティスト'
-
+  helpers:
+    submit:
+      create: '投稿する'
+      update: '更新する'

@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   require 'rspotify'
   require 'open-uri'
   RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
-  
+
   def new
 	@song = Song.new
   end
@@ -16,10 +16,11 @@ class SongsController < ApplicationController
 	end
   end
 
-  def show
-	@song = Song.find(params[:id])
-	tracks = Rspotify::Track.search(@song.name).first(9)
-	@track = tracks.find { |track| track.artists[0].name == @song.artist_name }
+  def search
+	@songs = Song.all
+	if params[:search].present?
+		@searchchairtists = RSpotify::Artist.search(params[:search])
+	end
   end
 
   private
