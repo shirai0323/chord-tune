@@ -60,6 +60,10 @@ gem 'high_voltage'
 
 gem 'rails-i18n'
 
+gem 'rspotify'
+
+gem 'dotenv-rails'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
