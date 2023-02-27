@@ -11,7 +11,13 @@
         <th><%= post.genre %></th>
         <th><%= post.created_at.to_fs(:datetime_jp) %></th>
         <th><%= post.user.name %></th>
-        <th><%= render 'crud_menus', post: post if current_user.own?(post) %></th></tr>
+        <th>
+          <% if logged_in? %>
+            <%= render 'crud_menus', post: post if current_user.own?(post) %>
+          <% else %>
+            <%= yield %>
+          <% end %>
+        </th></tr>
         <% end %>
   </tbody>
 </table>

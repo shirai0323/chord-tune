@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
+  skip_before_action :require_login, only: %i[index show]
 
   def index
     @q = Post.ransack(params[:q])
@@ -34,6 +35,12 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      array = @post.body.split("]")
+      array.map!{ |item| item.split("[") }
+      array.each do |item|
+        @post.scores.update(kind: :lyric, content: item.first) if item.first.present?
+        @post.scores.update(kind: :chord, content: item.last) if item.last.present?
+      end
       redirect_to @post, success: '更新しました'
     else
       flash.now['danger'] = '更新に失敗しました'

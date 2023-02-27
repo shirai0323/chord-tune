@@ -17,9 +17,12 @@
       <% end %>
     <% end %>
   </div>
-
-  <% if current_user.own?(@post) %>
-    <%= render 'crud_menus', post: @post %>
+  <% if logged_in? %>
+    <% if current_user.own?(@post) %>
+      <%= render 'crud_menus', post: @post %>
+    <% else %>
+      <%= render 'posts/bookmark_button', post: @post %>
+    <% end %>
   <% else %>
-    <%= render 'posts/bookmark_button', post: @post %>
+    <%= yield %>
   <% end %>

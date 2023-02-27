@@ -1,2 +1,6 @@
-<%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
-<%= button_to '削除', post_path(post), method: :delete, class: 'btn btn-danger' %>
+<table>
+  <tr>
+    <th><%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %></th>
+    <th><%= button_to '削除', post_path(post), method: :delete, class: 'btn btn-danger' %></th>
+  </tr>
+</table>
