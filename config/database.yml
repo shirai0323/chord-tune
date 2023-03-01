@@ -51,7 +51,4 @@ test:
 #
 production:
   <<: *default
-  database: clec5yi77003qagpd9qobeli2
-  username: clec5yi76003oagpddr7t7e57
-  password: <%= ENV["CHORDTUNE_DATABASE_PASSWORD"] %>
-  url: <%= ENV['DATABASE_URL'] %>
+  encoding: utf8mb4
