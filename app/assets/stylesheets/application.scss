@@ -3,16 +3,18 @@
 @import "pages";
 @import "bootstrap";
 
+.html, body {
+	height: 100%;
+	margin: 0;
+}
+
 .nav-item {
 	margin: 0px 3px 0px 3px;
 }
 
-html,body {
-	height:100%;
-}
-
 .foot-wrapper {
 	position: sticky;
+	bottom: 0;
 }
 
 .footer-menu {

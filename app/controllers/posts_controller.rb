@@ -34,6 +34,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
