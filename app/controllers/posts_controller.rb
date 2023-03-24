@@ -38,9 +38,10 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
+      @post.scores.destroy_all
       array.each do |item|
-        @post.scores.update(kind: :lyric, content: item.first) if item.first.present?
-        @post.scores.update(kind: :chord, content: item.last) if item.last.present?
+        @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
+        @post.scores.create(kind: :chord, content: item.last) if item.last.present?
       end
       redirect_to @post, success: '更新しました'
     else
