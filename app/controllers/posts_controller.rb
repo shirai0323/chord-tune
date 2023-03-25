@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
-      @post.scores.destroy_all
+      @post.scores.destroy_all #一度既存のスコアを全て削除
       array.each do |item|
         @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
         @post.scores.create(kind: :chord, content: item.last) if item.last.present?
