@@ -1,7 +1,7 @@
 ## サービス名
 **chord tune**
 
-▼ サービスURL
+## サービスURL
 https://chord-tune.com/
 
 ## ■ サービス概要
