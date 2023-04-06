@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
   skip_before_action :require_login, only: %i[index show]
+  require 'rspotify'
+  RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
 
   def index
     @q = Post.ransack(params[:q])
@@ -58,6 +60,13 @@ class PostsController < ApplicationController
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
     @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
+  def search_spotify
+    if params[:track].present?
+      @tracks = RSpotify::Track.search(params[:track], market: 'JP', limit: 9)
+      @search_params = params[:track]
+    end
   end
 
   private
