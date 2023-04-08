@@ -13,12 +13,10 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       get :bookmarks
+      get :search_spotify
     end
   end
   resources :bookmarks, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
-  resources :songs do
-    collection {get "search"}
-  end
 end

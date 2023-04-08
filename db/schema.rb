@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_141946) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_08_070549) do
   create_table "bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_141946) do
     t.bigint "user_id"
     t.string "airtist"
     t.string "genre"
+    t.string "track_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

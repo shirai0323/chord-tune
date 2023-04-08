@@ -1,4 +1,16 @@
+<% if @track_id.present? %>
+  <div class="new_card">
+    <iframe src="https://open.spotify.com/embed/track/<%= @track_id %>?utm_source=generator" 
+      width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+    </iframe>
+  </div>
+<% else %>
+  <%= link_to '楽曲を選択する', search_spotify_posts_path, class: 'btn btn-dark' %>
+<% end %>
 <%= form_with model: @post, local: true do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :track_id, value: @track_id %>
+  </div>
   <div class="form-group">
     <%= f.label :song_title %>
     <%= f.text_field :song_title, class: 'form-control' %>
@@ -12,8 +24,8 @@
 	<%= f.text_field :genre, class: 'form-control' %>
   </div>
   <div class="form-group">
-	<%= f.label :capotast %>
-	<%= f.number_field :capotast, step: "1", class: 'form-control' %>
+	  <%= f.label :capotast %>
+	  <%= f.number_field :capotast, step: "1", class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :body %>

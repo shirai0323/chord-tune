@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
   skip_before_action :require_login, only: %i[index show]
+  require 'rspotify'
+  RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
 
   def index
     @q = Post.ransack(params[:q])
@@ -13,10 +15,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @track_id = params[:track_id]
   end
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.track_id = params[:post][:track_id]
     if @post.save
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
@@ -35,6 +39,7 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
+    @post.track_id = params[:post][:track_id]
     if @post.update(post_params)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
@@ -60,6 +65,13 @@ class PostsController < ApplicationController
     @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
+  def search_spotify
+    if params[:track].present?
+      @tracks = RSpotify::Track.search(params[:track], market: 'JP', limit: 9)
+      @search_params = params[:track]
+    end
+  end
+
   private
 
   def set_post
@@ -67,6 +79,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre)
+    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre, :track_id)
   end
 end
