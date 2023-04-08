@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @track_id = params[:track_id]
   end
 
   def create
