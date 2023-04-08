@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.track_id = params[:post][:track_id]
     if @post.save
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
@@ -38,6 +39,7 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
+    @post.track_id = params[:post][:track_id]
     if @post.update(post_params)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
@@ -77,6 +79,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre)
+    params.require(:post).permit(:body, :song_title, :capotast, :airtist, :genre, :track_id)
   end
 end
