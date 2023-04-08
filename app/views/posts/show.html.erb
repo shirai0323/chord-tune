@@ -16,9 +16,9 @@
   <div class="scores">
     <% @post.scores.each do |score| %>
       <% if score.chord? %>
-    <div class="score"><b><%= score.content %></b></div>
+    <div class="score"><b><%= simple_format(score.content) %></b></div>
       <% elsif score.lyric? %>
-    <div class="score"><p><%= score.content %></p></div>
+    <div class="score"><p><%= simple_format(score.content) %></p></div>
       <% end %>
     <% end %>
   </div>
