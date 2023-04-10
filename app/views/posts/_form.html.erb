@@ -1,10 +1,10 @@
-<% if @track_id.present? %>
+<% if @track_id.present? && !@post.persisted? %>
   <div class="new_card">
     <iframe src="https://open.spotify.com/embed/track/<%= @track_id %>?utm_source=generator" 
       width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
     </iframe>
   </div>
-<% else %>
+<% elsif !@post.persisted? %>
   <%= link_to '楽曲を選択する', search_spotify_posts_path, class: 'btn btn-dark' %>
 <% end %>
 <%= form_with model: @post, local: true do |f| %>

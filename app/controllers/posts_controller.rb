@@ -43,8 +43,8 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    @post.track_id = params[:post][:track_id]
-    if @post.update(post_params)
+    post_params_without_track_id = post_params.except(:track_id)
+    if @post.update(post_params_without_track_id)
       array = @post.body.split("]")
       array.map!{ |item| item.split("[") }
       @post.scores.destroy_all #一度既存のスコアを全て削除
