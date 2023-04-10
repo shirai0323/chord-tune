@@ -22,11 +22,15 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.track_id = params[:post][:track_id]
     if @post.save
-      array = @post.body.split("]")
-      array.map!{ |item| item.split("[") }
-      array.each do |item|
-        @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
-        @post.scores.create(kind: :chord, content: item.last) if item.last.present?
+      if @post.body.include?("[") && @post.body.include?("]")
+        array = @post.body.split("]")
+        array.map!{ |item| item.split("[") }
+        array.each do |item|
+          @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
+          @post.scores.create(kind: :chord, content: item.last) if item.last.present?
+        end
+      else
+        @post.scores.create(kind: :lyric, content: @post.body)
       end
       redirect_to posts_path, success: '投稿しました'
     else

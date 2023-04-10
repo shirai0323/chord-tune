@@ -11,6 +11,7 @@
         <th><%= post.genre %></th>
         <th><%= post.created_at.to_fs(:datetime_jp) %></th>
         <th><%= post.user.name %></th>
+        <th><%= image_tag post.user.avatar.url, alt: post.user.name, class: 'rounded-circle', size: '50x50' %></th>
         <th>
           <% if logged_in? %>
             <%= render 'crud_menus', post: post if current_user.own?(post) %>
