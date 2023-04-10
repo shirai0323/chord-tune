@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     @q = Post.ransack(params[:q])
     @posts = @q.result
   end
+
+  def require_login
+    unless current_user
+      flash[:danger] = "ログインしてください"
+      redirect_to root_path
+    end
+  end
 end
