@@ -4,9 +4,14 @@
   </div>
     <%= render 'posts/search_form', q: @q, url: posts_path %>
 	<div class="top-form">
+    <% if logged_in? %>
+      <p><%= link_to 'コード譜新規作成', new_post_path, class: 'btn btn-dark' %></p>
+      <p><%= link_to '投稿一覧', posts_path, class: 'btn btn-dark' %></p>
+    <% else %>
       <p><%= link_to 'コード譜新規作成', new_post_path, class: 'btn btn-dark' %></p>
       <p><%= link_to 'ログイン', login_path, class: 'btn btn-dark' %></p>
       <p><%= link_to '新規登録', new_user_path, class: 'btn btn-dark' %></p>
       <p><%= link_to '投稿一覧', posts_path, class: 'btn btn-dark' %></p>
+    <% end %>
 	</div>
 </div>
