@@ -25,6 +25,7 @@ class PostsController < ApplicationController
       if @post.body.include?("[") && @post.body.include?("]")
         array = @post.body.split("]")
         array.map!{ |item| item.split("[") }
+        array[-1].push("") if array[-1].size == 1 #空の文字列を配列に追加しておくことで、最後の要素が常に配列の最後に来る
         array.each do |item|
           @post.scores.create(kind: :lyric, content: item.first) if item.first.present?
           @post.scores.create(kind: :chord, content: item.last) if item.last.present?
